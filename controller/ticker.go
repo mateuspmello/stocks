@@ -11,6 +11,7 @@ import (
 func NomeTicker(w http.ResponseWriter, r *http.Request) {
 	nome := "VVAR3.SA"
 	ticker := model.Stock{}
+
 	ticker.Ticker = nome
 	if err := Modelos.ExecuteTemplate(w, "ticker.html", ticker); err != nil {
 		http.Error(w, "Erro ao fazer a renderização da pagina", http.StatusInternalServerError)
