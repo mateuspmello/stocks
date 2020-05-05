@@ -5,9 +5,16 @@ import (
 	"net/http"
 
 	"github.com/mateuspmello/stocks/controller"
+	"github.com/mateuspmello/stocks/repo"
 )
 
 func main() {
+
+	err := repo.AbreConexaoComBancoDeDadosSQL()
+	if err != nil {
+		fmt.Println("Erro ao abrir a conexão com o banco de dados: ", err.Error())
+		return
+	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "Olá mundo")
